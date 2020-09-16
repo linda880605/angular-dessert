@@ -60,6 +60,7 @@
           }
         },
         "serve": {
+          "proxyConfig": "proxy.conf.json",
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "dessert:build"
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dessert"
+    }
+  },
+  "defaultProject": "dessert",
+  "cli": {
+    "analytics": false
+  }
 }

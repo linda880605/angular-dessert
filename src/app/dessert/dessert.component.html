@@ -1,0 +1,50 @@
+<div class="container picture1" style="background-image: url(https://bit.ly/2Qodh3Z);">
+  <div class="row d-flex justify-content-end">
+    <img arr-picture-img src="../assets/img/sm-想吃甜點是不需要理由的@2x.png" alt="">
+  </div>
+</div>
+
+<div class="bg-space"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="list-group" id="list-tab" role="tablist">
+        <a class="list-group-title" id="list-title-list" data-toggle="list">
+          <div class="list-title-style">甜點類別</div>
+        </a>
+        <a class="list-group-item list-group-item-action list-group-style active" id="list-all-list" data-toggle="list"
+          href="#list-all" role="tab" aria-controls="home" (click)="detail.select(0)">
+          <div class="list-group-text">所有甜點({{total}})</div>
+        </a>
+        <a class="list-group-item list-group-item-action list-group-style" id="list-today-list" data-toggle="list"
+          routerLink="/dessert" role="tab" aria-controls="profile" (click)="detail.select(1)">
+          <div class="list-group-text">本日精選({{this.type[0].num}})</div>
+        </a>
+        <a class="list-group-item list-group-item-action list-group-style" id="list-recommend-list" data-toggle="list"
+          routerLink="/dessert" role="tab" aria-controls="messages" (click)="detail.select(2)">
+          <div class="list-group-text">人氣推薦({{this.type[1].num}})</div>
+        </a>
+        <a class="list-group-item list-group-item-action list-group-style" id="list-new-list" data-toggle="list"
+          routerLink="/dessert" role="tab" aria-controls="settings" (click)="detail.select(3)">
+          <div class="list-group-text">新品上市({{this.type[2].num}})</div>
+        </a>
+        <a class="list-group-item list-group-item-action list-group-style" id="list-limit-list" data-toggle="list"
+          routerLink="/dessert" role="tab" aria-controls="settings" (click)="detail.select(4)">
+          <div class="list-group-text">絕版品</div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="tab-content" id="nav-tabContent">
+
+        <app-detail #detail [selectType]="selectType"></app-detail>
+
+        <div class="tab-pane fade" id="list-today" role="tabpanel" aria-labelledby="list-today-list">...</div>
+        <div class="tab-pane fade" id="list-recommend" role="tabpanel" aria-labelledby="list-recommend-list">...</div>
+        <div class="tab-pane fade" id="list-new" role="tabpanel" aria-labelledby="list-new-list">...</div>
+        <div class="tab-pane fade" id="list-limit" role="tabpanel" aria-labelledby="list-limit-list">...</div>
+      </div>
+    </div>
+  </div>
+</div>
