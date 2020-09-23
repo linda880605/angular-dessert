@@ -4,19 +4,22 @@
       <div class="col-md-10">
         <div class="row no-gutters">
 
-          <a class="col-4 selectBar" style="background-image: url(https://bit.ly/2QbVsVR);" (click)="detail.select(1)">
+          <a class="col-4 selectBar" style="background-image: url(https://bit.ly/2QbVsVR);"
+            (click)="onSelect(kind.daily)">
             <div class="row rectangleOver justify-content-center align-items-center">
               本日精選
             </div>
           </a>
 
-          <a class="col-4 selectBar" style="background-image: url(https://bit.ly/2Dwoxd7);" (click)="detail.select(2)">
+          <a class="col-4 selectBar" style="background-image: url(https://bit.ly/2Dwoxd7);"
+            (click)="onSelect(kind.popular)">
             <div class="row rectangleOver justify-content-center align-items-center">
               人氣推薦
             </div>
           </a>
 
-          <a class="col-4 selectBar" style="background-image: url(https://bit.ly/2OUteif);" (click)="detail.select(3)">
+          <a class="col-4 selectBar" style="background-image: url(https://bit.ly/2OUteif);"
+            (click)="onSelect(kind.new)">
             <div class="row rectangleOver justify-content-center align-items-center">
               新品上市
             </div>
@@ -98,7 +101,6 @@
       </div>
     </div>
 
-
   </div>
 </div>
 
@@ -116,4 +118,4 @@
   </div>
 </div>
 
-<app-block #detail [selectType]="selectType"></app-block>
+<app-block [selectType]="selectType"></app-block>

@@ -42,7 +42,7 @@
 
         </div>
 
-        <form>
+        <form [formGroup]="receiptForm" #form="ngForm">
           <div class="form-row mt-2">
             <div class="col-1"></div>
             <div class="col-10">
@@ -63,16 +63,22 @@
                     <div class="col-1"></div>
                     <div class="col-10">
                       <div class="form-group">
-                        <label for="email" class="deliver-form-text">電子郵件信箱</label>
-                        <input type="email" class="form-control deliver-form-textBox" id="mail" name="mail"
-                          [(ngModel)]="mail" (input)="check()" style="color: #8DA291; font-size: 20px;"
-                          placeholder="example@email.com">
+                        <label for="mail" class="deliver-form-text">電子郵件信箱</label>
+                        <input type="text" class="form-control deliver-form-textBox" id="mail" name="mail"
+                          [(ngModel)]="mail" style="color: #8DA291; font-size: 20px;" formControlName="mailControl"
+                          placeholder="example@email.com" required>
+
+                        <div *ngIf="mailId.invalid && (mailId.dirty || mailId.touched)" class="alert alert-danger">
+                          <div *ngIf="mailId.errors">
+                            請依照格式輸入
+                          </div>
+                        </div>
+
                       </div>
                       <div class="form-group">
                         <label for="uni-number" class="deliver-form-text">統一編號 (選填)</label>
                         <input type="text" class="form-control deliver-form-textBox" id="number" name="number"
-                          [(ngModel)]="number" (input)="check()" style="color: #8DA291; font-size: 20px;"
-                          placeholder="12345678">
+                          [(ngModel)]="number" style="color: #8DA291; font-size: 20px;" placeholder="12345678">
                       </div>
                     </div>
                   </div>
@@ -114,12 +120,10 @@
                       <div class="form-group">
                         <label for="uni-number" class="deliver-form-text">統一編號 (選填)</label>
                         <input type="text" class="form-control deliver-form-textBox" id="number2" name="number2"
-                          [(ngModel)]="number2" (input)="check()" style="color: #8DA291; font-size: 20px;"
-                          placeholder="12345678">
+                          [(ngModel)]="number2" style="color: #8DA291; font-size: 20px;" placeholder="12345678">
                       </div>
                     </div>
                   </div>
-
 
                 </div>
 
@@ -130,9 +134,11 @@
 
         </form>
       </div>
-      <a (click)="go()" style="text-decoration: none;">
-        <div type="submit" class="btn deliver-form-btn d-none d-md-block " style="margin-top: 0px;">下一步</div>
-        <div type="submit" class="btn deliver-form-btn d-md-none" style="width: 454px; margin-top: 0px;">下一步</div>
+      <a (click)="!receiptForm.invalid && go()" style="text-decoration: none;">
+        <div type="button" [ngClass]="{'disabled': receiptForm.invalid}" class="btn deliver-form-btn d-none d-md-block "
+          style="margin-top: 0px;">下一步</div>
+        <div type="button" [ngClass]="{'disabled': receiptForm.invalid}" class="btn deliver-form-btn d-md-none"
+          style="width: 454px; margin-top: 0px;">下一步</div>
       </a>
     </div>
 

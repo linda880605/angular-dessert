@@ -12,6 +12,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient) { }
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() { }
 
 }

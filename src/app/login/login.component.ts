@@ -33,16 +33,22 @@ export class LoginComponent implements OnInit {
       .set('userPw', userPw);
     const url = '/api/UserLogin';
     this.http.post(url, body, { responseType: 'text' })
-      .subscribe(res => {
-        if (res === 'false') {
-          alert('帳號或密碼輸入錯誤');
+      .subscribe(
+        res => {
+          if (res === 'false') {
+            alert('帳號或密碼輸入錯誤');
+          }
+          else {
+            this.checkService.setToken(res);
+            this.checkService.setUserEmail(userEmail);
+            this.router.navigate(['../home']); // 跳轉到首頁
+          }
+        },
+        error => {
+          console.log('error:', error);
+          alert('網頁發生錯誤 請立即聯絡我們 將由專人為您處理');
         }
-        else {
-          this.checkService.setToken(res);
-          this.checkService.setUserEmail(userEmail);
-          this.router.navigate(['../home']); // 跳轉到首頁
-        }
-      });
+      );
   }
 
 }

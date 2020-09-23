@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
+export enum Kind {
+  daily = 1,
+  popular = 2,
+  new = 3
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,11 +17,16 @@ export class HomeComponent implements OnInit {
   typeDetail: object;
   products: object;
   selectType: number;
+  kind = Kind;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     // this.searchProduct(); // 沒用到的API
+  }
+
+  onSelect(selectType: number): void {
+    this.selectType = selectType;
   }
 
   // searchProduct(): void { // 需傳參數queryString進來

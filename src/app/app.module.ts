@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,9 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { DessertComponent } from './dessert/dessert.component';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
-import { Checkout1Component } from './checkout1/checkout1.component';
-import { Checkout2Component } from './checkout2/checkout2.component';
-import { Checkout3Component } from './checkout3/checkout3.component';
+import { ShipComponent } from './ship/ship.component';
+import { PayComponent } from './pay/pay.component';
+import { ReceiptComponent } from './receipt/receipt.component';
 import { SuccessComponent } from './success/success.component';
 import { DetailComponent } from './detail/detail.component';
 import { BlockComponent } from './block/block.component';
@@ -23,9 +23,9 @@ import { BlockComponent } from './block/block.component';
     DessertComponent,
     LoginComponent,
     CartComponent,
-    Checkout1Component,
-    Checkout2Component,
-    Checkout3Component,
+    ShipComponent,
+    PayComponent,
+    ReceiptComponent,
     SuccessComponent,
     DetailComponent,
     BlockComponent,
@@ -33,6 +33,7 @@ import { BlockComponent } from './block/block.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
   ],

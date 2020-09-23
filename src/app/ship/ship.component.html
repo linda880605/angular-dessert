@@ -31,18 +31,33 @@
 
         </div>
 
-        <form>
+        <form [formGroup]="shipForm" #form="ngForm">
           <div class="form-row mt-4">
             <div class="col-1"></div>
             <div class="form-group col-5">
+
               <label for="surName" class="deliver-form-text">姓氏</label>
-              <input type="text" class="form-control deliver-form-textBox" style="color: #8DA291; font-size: 20px;"
-                id="surName" name="surName" [(ngModel)]="surName" placeholder="王" (input)="check()">
+              <input type="text" id="surName" name="surName" class="form-control deliver-form-textBox"
+                style="color: #8DA291; font-size: 20px;" formControlName="surNameControl" [(ngModel)]="surName"
+                placeholder="王" required>
+              <div *ngIf="surNameId.invalid && (surNameId.dirty || surNameId.touched)" class="alert alert-danger">
+                <div *ngIf="surNameId.errors">
+                  請輸入中文或英文
+                </div>
+              </div>
+
             </div>
             <div class="form-group col-5">
-              <label for="name" class="deliver-form-text">名字</label>
+              <label for="Name" class="deliver-form-text">名字</label>
               <input type="text" class="form-control deliver-form-textBox" style="color: #8DA291; font-size: 20px;"
-                id="name" name="name" [(ngModel)]="name" placeholder="小明" (input)="check()">
+                formControlName="nameControl" id="Name" name="Name" [(ngModel)]="Name" placeholder="小明" required>
+
+              <div *ngIf="nameId.invalid && (nameId.dirty || nameId.touched)" class="alert alert-danger">
+                <div *ngIf="nameId.errors">
+                  請輸入中文或英文
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -51,8 +66,16 @@
             <div class="col-10">
               <div class="form-group">
                 <label for="phone" class="deliver-form-text">電話</label>
-                <input type="text" class="form-control deliver-form-textBox" id="phone" name="phone" (input)="check()"
-                  style="color: #8DA291; font-size: 20px;" placeholder="0912-345-678" [(ngModel)]="phone">
+                <input type="text" class="form-control deliver-form-textBox" id="phone" name="phone"
+                  formControlName="phoneControl" style="color: #8DA291; font-size: 20px;" placeholder="0912-345-678"
+                  [(ngModel)]="phone" required>
+
+                <div *ngIf="phoneId.invalid && (phoneId.dirty || phoneId.touched)" class="alert alert-danger">
+                  <div *ngIf="phoneId.errors">
+                    請依照格式輸入
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -83,10 +106,16 @@
                 id="address" placeholder="幸福路520號">
             </div>
           </div>
-          <a (click)="go()" style="text-decoration: none;">
-            <div type="submit" class="btn deliver-form-btn d-none d-md-block">下一步</div>
-            <div type="submit" class="btn deliver-form-btn d-md-none" style="width: 454px;">下一步</div>
+
+          <a (click)="!shipForm.invalid && go()" style="text-decoration: none;">
+            <!--!shipForm.invalid && go() - and判斷 前者true才會判斷後者true false 可達到驗證成功才能按按鈕的效果 -->
+            <div type="button" [ngClass]="{'disabled': shipForm.invalid}"
+              class="btn deliver-form-btn d-none d-md-block">下一步</div>
+            <div type="button" [ngClass]="{'disabled': shipForm.invalid}" class="btn deliver-form-btn d-md-none"
+              style="width: 454px;">下一步</div>
           </a>
+
+          <!-- <button class="btn deliver-form-btn d-md-none" style="width: 454px;" [disabled]="shipForm.invalid" >確認</button> -->
 
         </form>
       </div>

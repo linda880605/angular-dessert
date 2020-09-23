@@ -33,17 +33,24 @@
             <div class="step-line" style="left: 120px;"></div>
             <div class="step-circle" style="position: absolute; left: 185px; bottom:18px"></div>
           </div>
-
         </div>
 
-        <form>
+        <form [formGroup]="payForm" #form="ngForm">
           <div class="form-row mt-2">
             <div class="col-1"></div>
             <div class="col-10">
               <div class="form-group">
                 <label for="card" class="deliver-form-text">信用卡卡號</label>
                 <input type="text" class="form-control deliver-form-textBox" id="card" name="card" [(ngModel)]="card"
-                  (input)="check()" style="color: #8DA291; font-size: 20px;" placeholder="9012-3456-7890-1234">
+                  style="color: #8DA291; font-size: 20px;" formControlName="cardControl"
+                  placeholder="9012-3456-7890-1234" required>
+
+                <div *ngIf="cardId.invalid && (cardId.dirty || cardId.touched)" class="alert alert-danger">
+                  <div *ngIf="cardId.errors">
+                    請依照格式輸入
+                  </div>
+                </div>
+
                 <span class="material-icons d-none d-md-block"
                   style="position: absolute; left: 570px; bottom: 30px; color: #3F5D45;">
                   credit_card
@@ -59,17 +66,31 @@
           <div class="form-row mt-4">
             <div class="col-1"></div>
             <div class="form-group col-5">
-              <label for="firstName" class="deliver-form-text">持卡人姓名</label>
+              <label for="surName" class="deliver-form-text">持卡人姓名</label>
               <input type="text" class="form-control deliver-form-textBox" style="color: #8DA291; font-size: 20px;"
-                id="surName" name="surName" [(ngModel)]="surName" placeholder="王" (input)="check()">
+                id="surName" name="surName" [(ngModel)]="surName" placeholder="王" formControlName="surNameControl"
+                required>
+
+              <div *ngIf="surNameId.invalid && (surNameId.dirty || surNameId.touched)" class="alert alert-danger">
+                <div *ngIf="surNameId.errors">
+                  請輸入中文或英文
+                </div>
+              </div>
+
             </div>
             <div class="form-group col-5" style="margin-top: 14px;">
-              <label for="surName" class="deliver-form-text"></label>
+              <label for="Name" class="deliver-form-text"></label>
               <input type="text" class="form-control deliver-form-textBox" style="color: #8DA291; font-size: 20px;"
-                id="name" name="name" [(ngModel)]="name" placeholder="小明" (input)="check()">
+                formControlName="nameControl" id="Name" name="Name" [(ngModel)]="Name" placeholder="小明" required>
+
+              <div *ngIf="nameId.invalid && (nameId.dirty || nameId.touched)" class="alert alert-danger">
+                <div *ngIf="nameId.errors">
+                  請輸入中文或英文
+                </div>
+              </div>
+
             </div>
           </div>
-
 
           <div class="form-row">
             <div class="col-1"></div>
@@ -94,13 +115,22 @@
             <div class="form-group col-5">
               <label for="three" class="deliver-form-text">背後末三碼</label>
               <input type="text" class="form-control deliver-form-textBox" style="color: #8DA291; font-size: 20px;"
-                id="three" name="three" [(ngModel)]="three" placeholder="123" (input)="check()">
+                id="three" name="three" [(ngModel)]="three" formControlName="threeControl" placeholder="123" required>
+
+              <div *ngIf="threeId.invalid && (threeId.dirty || threeId.touched)" class="alert alert-danger">
+                <div *ngIf="threeId.errors">
+                  請輸入三個數字
+                </div>
+              </div>
+
             </div>
           </div>
 
-          <a (click)="go()" style="text-decoration: none;">
-            <div type="submit" class="btn deliver-form-btn d-none d-md-block">下一步</div>
-            <div type="submit" class="btn deliver-form-btn d-md-none" style="width: 454px;">下一步</div>
+          <a (click)="!payForm.invalid && go()" style="text-decoration: none;">
+            <div type="button" [ngClass]="{'disabled': payForm.invalid}" class="btn deliver-form-btn d-none d-md-block">
+              下一步</div>
+            <div type="button" [ngClass]="{'disabled': payForm.invalid}" class="btn deliver-form-btn d-md-none"
+              style="width: 454px;">下一步</div>
           </a>
 
         </form>
