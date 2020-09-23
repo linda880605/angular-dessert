@@ -3,12 +3,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { DESSERT } from '../mock-dessert';
 import { Dessert } from '../dessert';
 
-export enum Kind {
-  all = 0,
-  daily = 1,
-  popular = 2,
-  new = 3,
-  out = 4
+export enum Kind { // enum的member要全大寫 多字節用底線連接
+  ALL = 0,
+  DAILY = 1,
+  POPULAR = 2,
+  NEW = 3,
+  OUT = 4
 }
 
 @Component({
@@ -28,12 +28,12 @@ export class DessertComponent implements OnInit {
 
   ngOnInit(): void {
     this.queryTypeAndNums();
-    console.log(Kind.daily);
+    console.log(Kind.DAILY);
   }
 
-  onSelect(selectType: number): void {
-    this.selectType = selectType;
-  }
+  // onSelect(selectType: number): void { // 只有要賦值可寫在html
+  //   this.selectType = selectType;
+  // }
 
   queryTypeAndNums(): void { // 甜點類別
     // Return 所有類別細節(名稱、狀態、數量、id)

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-export enum Kind {
-  daily = 1,
-  popular = 2,
-  new = 3
+export enum Kind { // enum的member要全大寫 多字節用底線連接
+  DAILY = 1,
+  POPULAR = 2,
+  NEW = 3
 }
 
 @Component({
@@ -25,9 +25,9 @@ export class HomeComponent implements OnInit {
     // this.searchProduct(); // 沒用到的API
   }
 
-  onSelect(selectType: number): void {
-    this.selectType = selectType;
-  }
+  // onSelect(selectType: number): void { // 只有要賦值可寫在html
+  //   this.selectType = selectType;
+  // }
 
   // searchProduct(): void { // 需傳參數queryString進來
   //   // Return 名稱包含queryString之產品 (名稱、價格、圖片、id、庫存)

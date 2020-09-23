@@ -45,13 +45,7 @@
                   style="color: #8DA291; font-size: 20px;" formControlName="cardControl"
                   placeholder="9012-3456-7890-1234" required>
 
-                <div *ngIf="cardId.invalid && (cardId.dirty || cardId.touched)" class="alert alert-danger">
-                  <div *ngIf="cardId.errors">
-                    請依照格式輸入
-                  </div>
-                </div>
-
-                <span class="material-icons d-none d-md-block"
+                  <span class="material-icons d-none d-md-block"
                   style="position: absolute; left: 570px; bottom: 30px; color: #3F5D45;">
                   credit_card
                 </span>
@@ -59,6 +53,14 @@
                   style="position: absolute; left:340px; bottom: 30px; color: #3F5D45;">
                   credit_card
                 </span>
+
+                <div *ngIf="cardId.invalid && (cardId.dirty || cardId.touched)" class="alert alert-danger">
+                  <div *ngIf="cardId.errors">
+                    請依照格式輸入
+                  </div>
+                </div>
+
+
               </div>
             </div>
           </div>

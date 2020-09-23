@@ -12,7 +12,7 @@ import { Kind } from '../dessert/dessert.component';
 })
 export class DetailComponent implements OnInit, OnChanges {
 
-  @Input() selectType: number;
+  @Input() selectType: Kind;
 
   // desserts = DESSERT;
   desserts: any;

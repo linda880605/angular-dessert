@@ -14,23 +14,24 @@
           <div class="list-title-style">甜點類別</div>
         </a>
         <a class="list-group-item list-group-item-action list-group-style active" id="list-all-list" data-toggle="list"
-          href="#list-all" role="tab" aria-controls="home" (click)="onSelect(kind.all)">
+          href="#list-all" role="tab" aria-controls="home" (click)="selectType = kind.ALL">
           <div class="list-group-text">所有甜點({{total}})</div>
         </a>
         <a class="list-group-item list-group-item-action list-group-style" id="list-today-list" data-toggle="list"
-          routerLink="/dessert" role="tab" aria-controls="profile" (click)="onSelect(kind.daily)">
-          <div class="list-group-text">本日精選({{this.type[kind.daily-1].num}})</div>
+          routerLink="/dessert" role="tab" aria-controls="profile" (click)="selectType = kind.DAILY">
+          <div class="list-group-text">本日精選({{this.type[kind.DAILY-1].num}})</div>
         </a>
         <a class="list-group-item list-group-item-action list-group-style" id="list-recommend-list" data-toggle="list"
-          routerLink="/dessert" role="tab" aria-controls="messages" (click)="onSelect(kind.popular)">
-          <div class="list-group-text">人氣推薦({{this.type[kind.popular-1].num}})</div>
+          routerLink="/dessert" role="tab" aria-controls="messages" (click)="selectType = kind.POPULAR">
+          <div class="list-group-text">人氣推薦({{this.type[kind.POPULAR-1].num}})</div>
         </a>
-        <a class="list-group-item list-group-item-action list-group-style" id="list-new-list" data-toggle="list"
-          routerLink="/dessert" role="tab" aria-controls="settings" (click)="onSelect(kind.new)">
-          <div class="list-group-text">新品上市({{this.type[kind.new-1].num}})</div>
+        <a class="list-group-item list-group-item-action list-group-style" id="list-new-
+        list" data-toggle="list"
+          routerLink="/dessert" role="tab" aria-controls="settings" (click)="selectType = kind.NEW">
+          <div class="list-group-text">新品上市({{this.type[kind.NEW-1].num}})</div>
         </a>
         <a class="list-group-item list-group-item-action list-group-style" id="list-limit-list" data-toggle="list"
-          routerLink="/dessert" role="tab" aria-controls="settings" (click)="onSelect(kind.out)">
+          routerLink="/dessert" role="tab" aria-controls="settings" (click)="selectType = kind.OUT">
           <div class="list-group-text">絕版品</div>
         </a>
       </div>

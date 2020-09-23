@@ -10,3 +10,8 @@
 .error {
   background-color: #a94442;
 }
+
+.alert,
+.alert-danger {
+  padding: 0.2rem 1.25rem;
+}
